@@ -1,5 +1,5 @@
 import telebot
-from config import TOKEN, keys
+from config import TOKEN, currency
 from extensions import CurrencyConverter, ConvertException
 
 bot = telebot.TeleBot(TOKEN)
@@ -24,7 +24,7 @@ def start_help(message: telebot.types.Message):
 @bot.message_handler(commands=['values'])
 def values(message: telebot.types.Message):
     text = 'Доступные валюты для конвертации:'
-    for key in keys.keys():
+    for key in currency.keys():
         text = '\n'.join((text, key))
     bot.reply_to(message, text)
 
@@ -33,11 +33,8 @@ def values(message: telebot.types.Message):
 def convert(message: telebot.types.Message):
     try:
         values = message.text.split(' ')
-        if len(values) > 3:
-            raise ConvertException('Слишком много данных. Введите 3 параметра.')
-
-        if len(values) < 3:
-            raise ConvertException('Слишком мало данных. Введите 3 параметра.')
+        if len(values) != 3:
+            raise ConvertException('Неверное количество данных. Введите 3 параметра.')
         first_values, second_values, amount = values
         first_values = first_values.lower()
         second_values = second_values.lower()
