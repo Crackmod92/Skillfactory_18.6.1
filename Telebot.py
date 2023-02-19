@@ -7,7 +7,7 @@ bot = telebot.TeleBot(TOKEN)
 @bot.message_handler(commands=['start'])
 def function_name(message: telebot.types.Message):
     bot.send_message(message.chat.id, f'\t{message.chat.first_name}, приветствую!'
-            'Этот бот поможет тебе узнать курс валюты и сконвертировать её. \n'
+            'Этот бот поможет тебе узнать курс валюты и сконвертировать её.\n'
             'Чтобы начать, введи нужные валюты и укажи количество (Пример: рубль доллар 100).\n'
             'Если остались вопросы, используй команду /help')
 
