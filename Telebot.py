@@ -1,5 +1,5 @@
 import telebot
-from config import TOKEN, currency
+from config import TOKEN, keys
 from extensions import CurrencyConverter, ConvertException
 
 bot = telebot.TeleBot(TOKEN)
@@ -24,7 +24,7 @@ def start_help(message: telebot.types.Message):
 @bot.message_handler(commands=['values'])
 def values(message: telebot.types.Message):
     text = 'Доступные валюты для конвертации:'
-    for key in currency.keys():
+    for key in keys.keys():
         text = '\n'.join((text, key))
     bot.reply_to(message, text)
 
