@@ -13,12 +13,12 @@ class CurrencyConverter:
         try:
             origin_cur == keys[origin_cur]
         except KeyError:
-            raise ConvertException('Валюта пока не доступна, либо допущена ошибка в названии.\n'
+            raise ConvertException('Валюта не доступна, либо допущена ошибка в названии.\n'
                                    'Попробуй еще раз.')
         try:
             target_cur == keys[target_cur]
         except KeyError:
-            raise ConvertException('Валюта пока не доступна, либо допущена ошибка в названии.\n'
+            raise ConvertException('Валюта не доступна, либо допущена ошибка в названии.\n'
                                    'Попробуй еще раз.')
         try:
             amount == int(amount)
